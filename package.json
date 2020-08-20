@@ -1,0 +1,22 @@
+{
+  "name": "ssk_avenues_server",
+  "version": "0.1.0",
+  "description": "",
+  "main": "server.mjs",
+  "scripts": {
+    "start": "node server.mjs",
+    "start:dev": "nodemon server.mjs",
+    "start:prod": "pm2 start server.mjs"
+  },
+  "author": "Tarun kolla",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.18"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
