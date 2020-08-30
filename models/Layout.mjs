@@ -32,7 +32,7 @@ const LayoutSchema = new Schema({
   images: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "image",
+      ref: "file",
     },
   ],
 });

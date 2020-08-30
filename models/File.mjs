@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-const ImageSchema = new Schema({
+const FileSchema = new Schema({
   data: {
     required: true,
     type: String,
@@ -10,7 +10,7 @@ const ImageSchema = new Schema({
   title: {
     type: String,
     required: true,
-    default: "Image" + Date.now().toString(),
+    default: "File" + Date.now().toString(),
   },
   uploaded: {
     type: Date,
@@ -18,6 +18,6 @@ const ImageSchema = new Schema({
   },
 });
 
-const Image = mongoose.model("image", ImageSchema);
+const File = mongoose.model("file", FileSchema);
 
-export default Image;
+export default File;

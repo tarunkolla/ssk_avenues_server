@@ -64,7 +64,6 @@ router.post("/", auth("STAFF"), async (req, res) => {
  * @access  Private
  */
 router.patch("/:id", auth("STAFF"), async (req, res) => {
-  console.log(req);
   try {
     const plot = await Plot.findByIdAndUpdate(
       req.params.id,

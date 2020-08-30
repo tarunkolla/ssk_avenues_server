@@ -6,15 +6,21 @@
   "scripts": {
     "start": "node server.mjs",
     "start:dev": "nodemon server.mjs",
-    "start:prod": "pm2 start server.mjs"
+    "start:prod": "pm2 start server.mjs",
+    "stop:prod": "pm2 start server.mjs"
   },
   "author": "Tarun kolla",
   "license": "UNLICENSED",
   "dependencies": {
+    "@sendgrid/mail": "^7.2.4",
     "bcryptjs": "^2.4.3",
+    "crypto": "^1.0.1",
     "express": "^4.17.1",
+    "gridfs-stream": "^1.1.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.18"
+    "mongoose": "^5.9.18",
+    "multer": "^1.4.2",
+    "multer-gridfs-storage": "^4.2.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"

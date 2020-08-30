@@ -126,6 +126,24 @@ router.post("/auth/register", async (req, res) => {
 });
 
 /**
+ *
+ */
+// router.patch("users/:id", auth("SELF"), async (req, res) => {
+//   try {
+//     const user = await user.findByIdAndUpdate(
+//       req.params.id,
+//       { ...req.body },
+//       { new: true }
+//     );
+
+//     if (!user) throw Error("user not found");
+//     res.status(200).json(user);
+//   } catch (error) {
+//     res.status(400).json({ message: error.message });
+//   }
+// });
+
+/**
  * @route   DELETE api/users/:id
  * @desc    Delete a user
  * @access  Private

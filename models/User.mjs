@@ -48,8 +48,20 @@ const UserSchema = new Schema({
   },
   displayPicture: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "image",
+    ref: "file",
   },
+  savedLayouts: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "layout",
+    },
+  ],
+  savedPlots: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "plot",
+    },
+  ],
 });
 
 const User = mongoose.model("user", UserSchema);
