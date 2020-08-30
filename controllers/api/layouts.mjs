@@ -2,6 +2,7 @@ import express from "express";
 import Layout from "../../models/Layout.mjs";
 import Plot from "../../models/Plot.mjs";
 import auth from "../../middleware/auth.mjs";
+import store from "../../middleware/store.mjs";
 
 const router = express.Router();
 
@@ -44,10 +45,11 @@ router.get("/", async (req, res) => {
  * @access Private
  */
 
-router.post("/", auth("STAFF"), async (req, res) => {
-  console.log(req.user);
+router.post("/", [auth("STAFF"), store.single("file")], async (req, res) => {
+  console.log(req.file);
   const newLayout = new Layout({
     ...req.body,
+    images: [req.file.id],
   });
 
   try {

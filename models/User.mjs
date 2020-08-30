@@ -30,9 +30,7 @@ const UserSchema = new Schema({
     ],
     default: ["PUBLIC"],
     required: true,
-    // match: [/^(PUBLIC|AGENT|USER|ADMIN|STAFF)$/, "Not a valid user role"],
   },
-
   email: {
     unique: true,
     required: true,

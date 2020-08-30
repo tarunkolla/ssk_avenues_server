@@ -3,19 +3,12 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const FileSchema = new Schema({
-  data: {
-    required: true,
-    type: String,
-  },
-  title: {
-    type: String,
-    required: true,
-    default: "File" + Date.now().toString(),
-  },
-  uploaded: {
-    type: Date,
-    default: Date.now,
-  },
+  length: Number,
+  chunkSize: Number,
+  uploadDate: Date,
+  filename: String,
+  md5: String,
+  contentType: String,
 });
 
 const File = mongoose.model("file", FileSchema);

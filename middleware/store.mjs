@@ -7,7 +7,7 @@ import mongoose from "mongoose";
 import config from "../config/index.mjs";
 
 const connection = mongoose.connection;
-const collectionName = "files";
+const collectionName = "uploads";
 const { MONGO_URI } = config;
 let gfs;
 

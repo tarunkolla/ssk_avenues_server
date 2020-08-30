@@ -32,21 +32,26 @@ router.get("/files/:id", async (req, res) => {
  */
 
 router.get("/images/:id", async (req, res) => {
-  const fileId = new mongoose.mongo.ObjectID(req.params.id);
-  await gfs.files.findOne({ _id: fileId }, (error, file) => {
-    if (error) {
-      res.status(400).json({ message: error.message });
-    }
-    if (!file || file.length === 0) {
-      res.status(404).json({ message: "File not found" });
-    }
-    if (file.contentType.includes("image")) {
-      const readstream = gfs.createReadStream(file.filename);
-      readstream.pipe(res);
-    } else {
-      res.status(404).json({ message: "File not image" });
-    }
-  });
+  try {
+    const fileId = new mongoose.mongo.ObjectID(req.params.id);
+
+    await gfs.files.findOne({ _id: fileId }, (error, file) => {
+      if (error) {
+        res.status(400).json({ message: error.message });
+      }
+      if (!file || file.length === 0) {
+        res.status(404).json({ message: "File not found" });
+      }
+      if (file.contentType.includes("image")) {
+        const readstream = gfs.createReadStream(file.filename);
+        readstream.pipe(res);
+      } else {
+        res.status(404).json({ message: "File not image" });
+      }
+    });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
 });
 
 /**

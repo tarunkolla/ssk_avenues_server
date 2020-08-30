@@ -1,6 +1,9 @@
 import express from "express";
 import mongoose from "mongoose";
 import config from "./config/index.mjs";
+import path from "path";
+
+const __dirname = path.resolve();
 
 const app = express();
 const { MONGO_URI, PORT } = config;
@@ -29,5 +32,11 @@ app.use("/api", files);
 app.use("/api/layouts", layouts);
 app.use("/api/plots", plots);
 app.use("/api/smtp", smtp);
+
+app.use(express.static(path.join(__dirname, "../ssk-avenues-js/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../ssk-avenues-js/build/index.html"));
+});
 
 app.listen(PORT, () => console.log(`server on port ${PORT} started...`));
