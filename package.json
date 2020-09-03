@@ -4,10 +4,11 @@
   "description": "",
   "main": "server.mjs",
   "scripts": {
-    "start": "node server.mjs",
     "start:dev": "nodemon server.mjs",
+    "start:prod:safe": "pm2 startup ubuntu",
     "start:prod": "pm2 start server.mjs",
-    "stop:prod": "pm2 stop server.mjs"
+    "stop:prod": "pm2 stop server.mjs",
+    "start": "npm run start:prod:safe && npm run start:prod"
   },
   "author": "Tarun kolla",
   "license": "UNLICENSED",
