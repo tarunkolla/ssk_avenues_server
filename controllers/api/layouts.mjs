@@ -46,7 +46,6 @@ router.get("/", async (req, res) => {
  */
 
 router.post("/", [auth("STAFF"), store.single("file")], async (req, res) => {
-  console.log(req.file);
   const newLayout = new Layout({
     ...req.body,
     images: [req.file.id],

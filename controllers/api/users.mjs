@@ -53,7 +53,7 @@ router.post("/auth/login", async (req, res) => {
       expiresIn: 60 * 60 * 24,
     });
     if (!token) throw Error("Couldnt sign the token");
-    console.log(user);
+
     res.status(200).json({
       token,
       user: {
