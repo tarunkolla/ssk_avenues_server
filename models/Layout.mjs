@@ -12,17 +12,9 @@ const LayoutSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  availablePlots: {
-    type: Number,
-    required: true,
-    default: 1,
-  },
-  totalPlots: {
-    type: Number,
-    required: true,
-    default: 1,
-  },
   address: String,
+  addressHref: String,
+
   plots: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -31,10 +23,12 @@ const LayoutSchema = new Schema({
   ],
   images: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "file",
+      _id: false,
+      image: mongoose.Schema.Types.ObjectId,
+      title: String,
     },
   ],
+  brochure: mongoose.Schema.Types.ObjectId,
 });
 
 const Layout = mongoose.model("layout", LayoutSchema);

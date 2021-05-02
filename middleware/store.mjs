@@ -16,11 +16,14 @@ connection.once("open", () => {
   gfs.collection(collectionName);
 });
 
+//custom storage engine
+
 //grid storage
 const storage = gridStorage({
   url: MONGO_URI,
-  file: (req, file) => {
+  file: (_req, file) => {
     return new Promise((resolve, reject) => {
+      //random file name of size 16
       crypto.randomBytes(16, (err, buf) => {
         if (err) {
           return reject(err);

@@ -35,7 +35,7 @@ app.use("/api/smtp", smtp);
 
 app.use(express.static(path.join(__dirname, "../ssk-avenues-js/build")));
 
-app.get("*", (req, res) => {
+app.get("*", (_req, res) => {
   res.sendFile(path.join(__dirname, "../ssk-avenues-js/build/index.html"));
 });
 
