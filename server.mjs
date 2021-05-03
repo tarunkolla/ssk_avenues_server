@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import config from "./config/index.mjs";
 import path from "path";
+import compression from "compression";
 
 const __dirname = path.resolve();
 
@@ -9,6 +10,8 @@ const app = express();
 const { MONGO_URI, PORT } = config;
 
 app.use(express.json());
+
+app.use(compression());
 
 mongoose
   .connect(MONGO_URI, {
