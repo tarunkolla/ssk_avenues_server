@@ -40,7 +40,6 @@
     "mini-css-extract-plugin": "^1.6.0",
     "mongodb-client-encryption": "^1.2.3",
     "nodemon": "^2.0.4",
-    "optimize-css-assets-webpack-plugin": "^5.0.4",
     "style-loader": "^2.0.0",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "url-loader": "^4.1.1",

@@ -1,6 +1,5 @@
 const path = require("path");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = {
   entry: {
@@ -15,16 +14,14 @@ module.exports = {
   resolve: {
     extensions: [".mjs", ".ts", ".js"],
   },
-  // devtool: "source-map",
 
   optimization: {
     minimizer: [
       new UglifyJsPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: false, // set to true if you want JS source maps
+        cache: false,
+        parallel: false,
+        sourceMap: false,
       }),
-      new OptimizeCSSAssetsPlugin({}),
     ],
   },
 };
