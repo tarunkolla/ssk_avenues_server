@@ -203,6 +203,28 @@ router.patch(
  * @access  Private
  */
 
+router.delete("/:id/plots/:plotId", auth("STAFF"), async (req, res) => {
+  try {
+    const layout = await Layout.findById(req.params.id);
+    const plot = await Plot.findByIdAndRemove(req.params.plotId);
+
+    if (!layout || !plot) throw Error("No Layout or Plot found");
+
+    layout.plots.pull(req.params.plotId);
+    layout.lastUpdated = Date.now();
+    await layout.save();
+    res.status(200).json({ success: true });
+  } catch (error) {
+    res.status(400).json({ message: error.message, success: false });
+  }
+});
+
+/**
+ * @route   DELETE api/Layouts/:id
+ * @desc    Delete a Layout
+ * @access  Private
+ */
+
 router.delete("/:id", auth("ADMIN"), async (req, res) => {
   try {
     const layout = await Layout.findById(req.params.id);
